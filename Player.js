@@ -1,4 +1,7 @@
-var JsBase = require("../JsBase/jsbase.js");
+if (require) {
+	JsBase = require("../JsBase/jsbase.js");
+}
+
 
 function Player() {
 	this.m_Data = {};
@@ -34,6 +37,6 @@ Player.prototype.GetUpdataTime = function () {
 	return this.m_Data["LastUpdateTime"];
 }
 
-if(module){
+if (typeof module !== undefined) {
 	module.exports = Player;
 }
