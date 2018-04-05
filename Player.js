@@ -1,4 +1,5 @@
-var JsBase = require ("./JsBase.js");
+
+var JsBase = require ("../JsBase/jsbase.js");
 
 function Player(){
 	this.m_PlayerNumber = null;
