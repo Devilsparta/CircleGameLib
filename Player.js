@@ -4,7 +4,7 @@ function Player() {
 	this.m_Data = {};
 	this.m_Data["PlayerNumber"] = null;
 	this.m_Data["PlayerPos"] = [];
-	this.m_Data["LastUpdateTime"] = JsBase.GetCurTime();
+	this.m_Data["LastUpdateTime"] = JsBase.GetCurTimestamp();
 	this.m_Data["FirstLoginTime"] = null;
 }
 
@@ -34,4 +34,6 @@ Player.prototype.GetUpdataTime = function () {
 	return this.m_Data["LastUpdateTime"];
 }
 
-module.exports = Player;
+if(module){
+	module.exports = Player;
+}
