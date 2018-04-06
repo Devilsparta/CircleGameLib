@@ -9,6 +9,7 @@ function Player() {
 	this.m_Data["PlayerPos"] = [];
 	this.m_Data["LastUpdateTime"] = JsBase.GetCurTimestamp();
 	this.m_Data["FirstLoginTime"] = null;
+	this.m_Data["Room"] = null;
 }
 
 Player.prototype.GetValue = function (key) {

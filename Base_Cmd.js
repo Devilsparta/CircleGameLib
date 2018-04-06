@@ -21,3 +21,7 @@ Cmd.prototype.Check = function () {
 Cmd.prototype.Do = function () {
 	return;
 }
+
+if(typeof module !== "undefined"){
+	module.exports = Cmd;
+}

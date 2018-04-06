@@ -1,4 +1,9 @@
-var global = {};
+if(typeof module === "undefined"){
+	global = {};
+}else{
+	EventEmitter2 = require('eventemitter2').EventEmitter2;
+}
+
 global.EvEmitter = {};
 var evEmitter = new EventEmitter2();
 
