@@ -1,5 +1,9 @@
-function CommandDispatch() {
+if (typeof module !== "undefined") {
+	JsBase = require("../JsBase/jsbase");
 }
+function CmdDispatcher() {
+}
+var GetCmdDispatcher = jasmin.GenSingletonInst();
 
 /**
  * Dispatch Cmd On RecvMsg
@@ -7,7 +11,9 @@ function CommandDispatch() {
  * @param {string} act 操作
  * @param {object} param 参数
  */
-CommandDispatch.prototype.DispatchCmd = function (cmdName, param) {
+CmdDispatcher.prototype.DispatchCmd = function (param) {
+	console.log(param);
+	return;
 	global.EvEmitter.Emit("Cmd_" + cmdName + "_Execute", param);
 }
 
@@ -16,15 +22,21 @@ CommandDispatch.prototype.DispatchCmd = function (cmdName, param) {
  * @param {string | number} cmdName string to identify which cmd you want to call
  * @param {object} param arguments you pass to cmd
  */
-CommandDispatch.prototype.SendCmd = function(cmdName, param){
+CmdDispatcher.prototype.SendCmd = function (cmdName, param) {
 	var sendParam = {};
-	if(!cmdName){
-		console.error("[CommandDispatch.SendCmd] Wrong cmdName: " + cmdName);
+	if (!cmdName) {
+		console.error("[CmdDispatcher.SendCmd] Wrong cmdName: " + cmdName);
 		return;
-	}	
+	}
 	sendParam.C = cmdName; //C: Cmd
 	sendParam.D = param; //D: Data
 	var jsonParam = JSON.stringify(sendParam);
-	
+
 	global.EvEmitter.Emit("Msger_SendMsg", jsonParam);
+}
+
+var Cmder = GetCmdDispatcher();
+
+if (typeof module !== "undefined") {
+	module.exports = GetCmdDispatcher();
 }

@@ -1,4 +1,7 @@
 function Cmd(cmdName) {
+	if(!cmdName){
+		return;
+	}
 	this.m_CmdName = cmdName;
 	global.EvEmitter.On(cmdName, this.Execute);
 }
