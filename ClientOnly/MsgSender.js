@@ -3,7 +3,7 @@ function MsgSender() {
 	this.m_Url = null;
 }
 
-var GetMsgSneder = JsBase.GenSingletonInst();
+var GetMsgSender = JsBase.GenSingletonInst(MsgSender);
 
 MsgSender.prototype.Init = function (param) {
 	this.m_Url = param.Url;
@@ -30,5 +30,10 @@ MsgSender.prototype.Init = function (param) {
 		this.m_Protocal.addEventListener("close", param.OnClose)
 	}
 
+}
+
+MsgSender.prototype.Send = function(param){
+	var jsonParam = JSON.stringify(param);
+	this.m_Protocal.send(jsonParam);
 }
 

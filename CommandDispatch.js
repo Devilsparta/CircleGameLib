@@ -3,7 +3,7 @@ if (typeof module !== "undefined") {
 }
 function CmdDispatcher() {
 }
-var GetCmdDispatcher = jasmin.GenSingletonInst();
+var GetCmdDispatcher = JsBase.GenSingletonInst(CmdDispatcher);
 
 /**
  * Dispatch Cmd On RecvMsg
@@ -12,8 +12,8 @@ var GetCmdDispatcher = jasmin.GenSingletonInst();
  * @param {object} param 参数
  */
 CmdDispatcher.prototype.DispatchCmd = function (param) {
-	console.log(param);
-	return;
+	var cmdName = param.C;
+	var param = param.D;
 	global.EvEmitter.Emit("Cmd_" + cmdName + "_Execute", param);
 }
 
@@ -30,9 +30,8 @@ CmdDispatcher.prototype.SendCmd = function (cmdName, param) {
 	}
 	sendParam.C = cmdName; //C: Cmd
 	sendParam.D = param; //D: Data
-	var jsonParam = JSON.stringify(sendParam);
 
-	global.EvEmitter.Emit("Msger_SendMsg", jsonParam);
+	global.EvEmitter.Emit("Msger_SendMsg", sendParam);
 }
 
 var Cmder = GetCmdDispatcher();
