@@ -37,5 +37,5 @@ CmdDispatcher.prototype.SendCmd = function (cmdName, param) {
 var Cmder = GetCmdDispatcher();
 
 if (typeof module !== "undefined") {
-	module.exports = GetCmdDispatcher();
+	module.exports = Cmder;
 }
