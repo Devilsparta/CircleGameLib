@@ -3,7 +3,7 @@ function Cmd(cmdName) {
 		return;
 	}
 	this.m_CmdName = cmdName;
-	global.EvEmitter.On(cmdName, this.Execute);
+	global.EvEmitter.On("Cmd_" + cmdName + "_Execute", Cmd.prototype.Execute.bind(this));
 }
 
 Cmd.prototype.Execute = function (param) {
